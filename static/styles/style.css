@@ -1165,3 +1165,64 @@ a {
   color: var(--color-main);
   font-weight: 1.4rem;
 }
+
+.alert-container {
+  top: 100px; 
+  position: fixed; 
+  left: 100x;
+  right: 10px; 
+  z-index: 9999; 
+  width: 30%
+}
+
+/* Base alert box styling */
+.alert {
+  position: relative;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px; /* Adjusted for a more standard appearance */
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  color: #fff; /* Default text color */
+  background-color: #007bff; /* Default background */
+}
+
+/* Specific alert types for visibility */
+.alert-success { background-color: #28a745; }
+.alert-info { background-color: #17a2b8; }
+.alert-warning { background-color: #ffc107; }
+.alert-danger { background-color: #dc3545; }
+
+/* Close button styling */
+.btn-close {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+  opacity: 0.6;
+}
+
+.btn-close:before, .btn-close:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 2px;
+  background-color: #fff;
+}
+
+.btn-close:before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.btn-close:after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.btn-close:hover {
+  opacity: 1;
+}

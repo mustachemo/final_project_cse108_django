@@ -7,9 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Include Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
     <title>StudyBuddy - Find study partners around the world!</title>
 </head>
 
@@ -17,10 +16,10 @@
 
     {% include 'navbar.html' %}
 
-    <div class="col-sm-4" style="top: 100px; position: fixed; left: 100x; right: 10px; z-index: 9999; width: 30%">
+    <div class="alert-container">
     {% if messages %}
         {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" style="border-radius: 30px; border-top-left-radius: 0px;">
+        <div class="alert alert-{{ message.tags }}">
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             {{ message }}
         </div>
@@ -34,19 +33,17 @@
     {% endblock %}
 
     <script src="{% static 'js/script.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const alerts = document.querySelectorAll('.alert-dismissible');
-            alerts.forEach(function(alert) {
-            setTimeout(function() {
-                const closeButton = alert.querySelector('.btn-close');
-                if (closeButton) {
-                closeButton.click();
-                }
-            }, 4000);
+        // close alert and set timeout
+        const alertClose = document.querySelectorAll('.alert .btn-close');
+        alertClose.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.target.parentElement.style.display = 'none';
             });
         });
+        setTimeout(() => {
+            document.querySelector('.alert').style.display = 'none';
+        }, 5000);
     </script>
 </body>
 

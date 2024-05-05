@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
 :root {
   --color-main: #71c6dd;
@@ -17,8 +17,8 @@
 /*========== base styles ==========*/
 
 * {
-  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-    "Helvetica Neue", sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -43,8 +43,6 @@ html {
   }
 }
 
-
-
 body {
   line-height: 1.6;
   font-weight: 400;
@@ -68,7 +66,8 @@ a {
 .container {
   max-width: 90vw;
   width: 90%;
-  margin: auto;
+  max-height: 100vh;
+  margin: 0 auto;
 }
 
 .btn {
@@ -148,7 +147,7 @@ a {
 }
 
 .avatar::after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   background-color: var(--color-gray);
@@ -427,6 +426,7 @@ a {
   width: 90%;
   max-width: 48rem;
   min-height: 40rem;
+  max-height: 80vh;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -570,6 +570,10 @@ a {
 
 .topics__list {
   list-style: none;
+  max-height: 400px; /* Adjust the height as needed */
+  overflow-y: auto; /* Enables vertical scrolling */
+  padding-right: 15px; /* Optional: Adjusts padding to avoid cutting off scrollbar */
+  box-sizing: border-box; /* Ensures padding is included in width/height calculations */
 }
 
 .topics__list li a {
@@ -606,7 +610,7 @@ a {
   border-bottom: 1px solid var(--color-dark-medium);
 }
 
-.topics-page .header__search{
+.topics-page .header__search {
   display: block;
 }
 
@@ -1043,6 +1047,12 @@ a {
   margin: 1rem 0;
 }
 
+.room__body {
+  margin-top: 1rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
 .room__conversation {
   margin-top: 1rem;
   margin-bottom: 4rem;
@@ -1167,12 +1177,12 @@ a {
 }
 
 .alert-container {
-  top: 100px; 
-  position: fixed; 
+  top: 100px;
+  position: fixed;
   left: 100x;
-  right: 10px; 
-  z-index: 9999; 
-  width: 30%
+  right: 10px;
+  z-index: 9999;
+  width: 30%;
 }
 
 /* Base alert box styling */
@@ -1181,16 +1191,24 @@ a {
   padding: 1rem;
   margin-bottom: 1rem;
   border-radius: 10px; /* Adjusted for a more standard appearance */
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   color: #fff; /* Default text color */
   background-color: #007bff; /* Default background */
 }
 
 /* Specific alert types for visibility */
-.alert-success { background-color: #28a745; }
-.alert-info { background-color: #17a2b8; }
-.alert-warning { background-color: #ffc107; }
-.alert-danger { background-color: #dc3545; }
+.alert-success {
+  background-color: #28a745;
+}
+.alert-info {
+  background-color: #17a2b8;
+}
+.alert-warning {
+  background-color: #ffc107;
+}
+.alert-danger {
+  background-color: #dc3545;
+}
 
 /* Close button styling */
 .btn-close {
@@ -1205,7 +1223,8 @@ a {
   opacity: 0.6;
 }
 
-.btn-close:before, .btn-close:after {
+.btn-close:before,
+.btn-close:after {
   content: '';
   position: absolute;
   top: 50%;

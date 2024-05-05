@@ -293,7 +293,8 @@ a {
 
 .header > .container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   gap: 9.5rem;
 }
@@ -421,11 +422,14 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  margin-bottom: 2.4rem;
 }
 
 .layout--3 > .container > div:first-child {
   flex-basis: 18%;
-  max-width: 22.5rem;
+  max-width: 30rem;
+  max-height: 70rem;
+  margin-bottom: 2rem;
 }
 
 .layout--3 > .container > div:nth-child(2) {
@@ -599,9 +603,9 @@ a {
 .topics__list {
   list-style: none;
   max-width: 100%; /* Ensures full width */
-  max-height: 400px; /* Adjust the height as needed */
+  height: 80vh; /* Ensures full height */
+  max-height: 80%; /* Adjust the height as needed */
   overflow-y: auto; /* Enables vertical scrolling */
-  padding: 0 15px; /* Adjusts padding to avoid cutting off scrollbar */
   margin: 0;
   box-sizing: border-box; /* Ensures padding is included in width/height calculations */
   background-color: var(--color-bg); /* Assuming --color-bg is a dark color */
@@ -753,6 +757,14 @@ a {
 
   width: 1.6rem;
   height: 1.6rem;
+}
+
+.roomListRoom__title {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-light);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .roomListRoom__content {

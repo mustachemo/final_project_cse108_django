@@ -2,6 +2,6 @@
 
 using django for the final project
 
-1. make the topic_components be scrollable and show all topics
-2. add upvote and downvote to posts
-3. add upvote and downvote to comments
+- [] make the topic_components be scrollable and show all topics
+- [x] add upvote and downvote to posts
+- [] make forum links clickable, all of it

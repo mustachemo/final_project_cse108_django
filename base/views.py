@@ -213,3 +213,13 @@ def topicsPage(request):
 def activityPage(request):
     room_messages = Message.objects.all()
     return render(request, 'base/activity.html', {'room_messages': room_messages})
+
+def upvote_room(request, pk):
+    room = Room.objects.get(id=pk)
+    room.upvotes.add(request.user)
+    return redirect('home')
+
+def downvote_room(request, pk):
+    room = Room.objects.get(id=pk)
+    room.downvotes.add(request.user)
+    return redirect('home')

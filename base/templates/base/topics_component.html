@@ -2,7 +2,7 @@
   <div class="topics__header">
     <h2>Browse Classes</h2>
   </div>
-  <ul class="topics__list">
+  <ul class="topics__list light-background">
     <li>
       <a href="{% url 'home' %}" class="{% if request.path == '/' and not request.GET.q %}active{% endif %}"
         >All <span>{{topics.count}}</span></a

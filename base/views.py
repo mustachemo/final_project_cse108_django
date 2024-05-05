@@ -34,6 +34,7 @@ def loginPage(request):
 
         if user is not None:
             login(request, user)
+            messages.success(request, 'Logged in as ' + user.username)
             return redirect('home')
         else:
             messages.error(request, 'Username OR password does not exit')
@@ -44,6 +45,7 @@ def loginPage(request):
 
 def logoutUser(request):
     logout(request)
+    messages.info(request, 'User was logged out!')
     return redirect('home')
 
 
@@ -57,6 +59,8 @@ def registerPage(request):
             user.username = user.username.lower()
             user.save()
             login(request, user)
+            messages.success(request, 'User account was created!')
+            messages.info(request, 'User was logged in!')
             return redirect('home')
         else:
             messages.error(request, 'An error occurred during registration')
@@ -73,10 +77,10 @@ def home(request):
         Q(description__icontains=q)
     )
 
-    topics = Topic.objects.all()[0:5]
+    topics = Topic.objects.all()
     room_count = rooms.count()
     room_messages = Message.objects.filter(
-        Q(room__topic__name__icontains=q))[0:3]
+        Q(room__topic__name__icontains=q))[0:4]
 
     context = {'rooms': rooms, 'topics': topics,
                'room_count': room_count, 'room_messages': room_messages}
@@ -126,6 +130,8 @@ def createRoom(request):
             name=request.POST.get('name'),
             description=request.POST.get('description'),
         )
+
+        messages.success(request, 'Post created successfully!')
         return redirect('home')
 
     context = {'form': form, 'topics': topics}
@@ -147,6 +153,8 @@ def updateRoom(request, pk):
         room.topic = topic
         room.description = request.POST.get('description')
         room.save()
+
+        messages.success(request, 'Post updated successfully!')
         return redirect('home')
 
     context = {'form': form, 'topics': topics, 'room': room}
@@ -162,6 +170,8 @@ def deleteRoom(request, pk):
 
     if request.method == 'POST':
         room.delete()
+
+        messages.success(request, 'Post deleted successfully!')
         return redirect('home')
     return render(request, 'base/delete.html', {'obj': room})
 
@@ -188,6 +198,8 @@ def updateUser(request):
         form = UserForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
+
+            messages.success(request, 'User account was updated!')
             return redirect('user-profile', pk=user.id)
 
     return render(request, 'base/update-user.html', {'form': form})
@@ -202,3 +214,13 @@ def topicsPage(request):
 def activityPage(request):
     room_messages = Message.objects.all()
     return render(request, 'base/activity.html', {'room_messages': room_messages})
+
+def upvote_room(request, pk):
+    room = Room.objects.get(id=pk)
+    room.upvotes.add(request.user)
+    return redirect('home')
+
+def downvote_room(request, pk):
+    room = Room.objects.get(id=pk)
+    room.downvotes.add(request.user)
+    return redirect('home')

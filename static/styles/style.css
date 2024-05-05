@@ -1,24 +1,30 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
 :root {
-  --color-main: #71c6dd;
-  --color-main-light: #e1f6fb;
-  --color-dark: #3f4156;
-  --color-dark-medium: #51546e;
-  --color-dark-light: #696d97;
-  --color-light: #e5e5e5;
-  --color-gray: #8b8b8b;
-  --color-light-gray: #b2bdbd;
-  --color-bg: #2d2d39;
-  --color-success: #5dd693;
-  --color-error: #fc4b0b;
+  --color-main: #ffc72c; /* UC Merced Yellow */
+  --color-main-dark: #00274c; /* UC Merced Blue */
+  --color-main-light: #ffdd87; /* Lighter yellow for gradients and hover states */
+  --color-dark: #00274c; /* A darker shade of the UC Merced blue */
+  --color-dark-medium: #1a407f; /* A medium shade of blue */
+  --color-dark-light: #334d75; /* Light blue, slightly desaturated */
+  --color-light: #ffffff; /* Pure white for text and backgrounds */
+  --color-gray: #d2d2d2; /* Gray for less emphasis */
+  --color-light-gray: #e8e8e8; /* Light gray for backgrounds and lines */
+  --color-bg: #e5f3ff; /* Very light blue, almost white, for backgrounds */
+  --color-success: #28a745; /* Success green, keep it for semantic purposes */
+  --color-error: #dc3545; /* Error red, also for semantic usage */
+  --text-color-dark: #000000;
+  --text-color-light: #ffffff;
 }
+
+/* You might want to adjust usage of these colors throughout your CSS to make sure they are applied consistently. For example
 
 /*========== base styles ==========*/
 
 * {
-  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-    "Helvetica Neue", sans-serif;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+    /* border: 1px solid red; */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -43,8 +49,6 @@ html {
   }
 }
 
-
-
 body {
   line-height: 1.6;
   font-weight: 400;
@@ -64,11 +68,19 @@ a {
   text-decoration: none;
 }
 
+.dark-background {
+  color: var(--text-color-light);
+}
+.light-background {
+  color: var(--text-color-dark);
+}
+
 /*========== components ==========*/
 .container {
   max-width: 90vw;
   width: 90%;
-  margin: auto;
+  max-height: 100vh;
+  margin: 0 auto;
 }
 
 .btn {
@@ -101,8 +113,14 @@ a {
   color: var(--color-dark);
 }
 
+.btn--main:hover {
+  background-color: var(--color-main-light);
+}
+
 .btn:hover {
   opacity: 0.9;
+  background-color: var(--color-main); /* Changes background on hover */
+  color: var(--color-dark); /* Changes text color on hover for better visibility */
 }
 
 .btn--dark {
@@ -148,7 +166,7 @@ a {
 }
 
 .avatar::after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   background-color: var(--color-gray);
@@ -268,12 +286,17 @@ a {
 ================================*/
 
 .header {
-  padding: 1.5rem;
-  background-color: var(--color-dark);
+  padding: 1rem 2rem; /* More compact padding */
+  background-color: var(--color-main-dark);
+  color: var(--color-light);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
 .header > .container {
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   gap: 9.5rem;
 }
 
@@ -285,13 +308,14 @@ a {
 }
 
 .header__logo > img {
-  height: 3.2rem;
-  width: 3.2rem;
+  height: 40px; /* Slightly larger */
+  width: 40px; /* Slightly larger */
+  margin-right: 10px; /* Space between logo and text */
 }
 
 .header__logo > h1 {
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 2rem; /* Slightly smaller for a more refined look */
   color: var(--color-light);
 }
 
@@ -399,11 +423,14 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  margin-bottom: 2.4rem;
 }
 
 .layout--3 > .container > div:first-child {
   flex-basis: 18%;
-  max-width: 22.5rem;
+  max-width: 30rem;
+  max-height: 70rem;
+  margin-bottom: 2rem;
 }
 
 .layout--3 > .container > div:nth-child(2) {
@@ -427,6 +454,7 @@ a {
   width: 90%;
   max-width: 48rem;
   min-height: 40rem;
+  max-height: 80vh;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -566,33 +594,76 @@ a {
   text-transform: uppercase;
   font-weight: 500;
   color: var(--color-dark-light);
+  /* put it in the middle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Base Styles */
 .topics__list {
   list-style: none;
+  max-width: 100%; /* Ensures full width */
+  height: 80vh; /* Ensures full height */
+  max-height: 80%; /* Adjust the height as needed */
+  overflow-y: auto; /* Enables vertical scrolling */
+  margin: 0;
+  box-sizing: border-box; /* Ensures padding is included in width/height calculations */
+  background-color: var(--color-bg); /* Assuming --color-bg is a dark color */
+  border-radius: 8px; /* Rounded corners for the container */
+}
+
+.topics__list li {
+  width: 100%; /* Ensure li tags take up the full width */
 }
 
 .topics__list li a {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 3rem;
-  font-weight: 500;
-  color: var(--color-light-gray);
-  transition: all 0.3s ease-in-out;
+  justify-content: space-between; /* Ensures label and number are spaced apart */
+  align-items: center; /* Centers items vertically */
+  padding: 10px 20px; /* Consistent padding */
+  border-radius: 6px; /* Optional rounded corners */
+  margin-bottom: 8px; /* Space between items */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  text-decoration: none; /* No underline */
+  color: inherit; /* Inherits color from parent */
 }
 
-.topics__list li a.active,
-.topics__list li a:hover {
+.topics__list li:last-child a {
+  margin-bottom: 0; /* No bottom margin for the last item */
+}
+
+/* Hover and Active Styles */
+.topics__list li a:hover,
+.topics__list li a.active {
+  background-color: var(--color-main-dark);
   color: var(--color-main);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
+/* Count Badge Styles */
 .topics__list li a span {
-  padding: 0.5rem 1rem;
-  background-color: var(--color-dark);
-  border-radius: 3px;
-  font-size: 1.3rem;
+  padding: 4px 8px; /* Slightly less padding for the badge */
+  background-color: var(--color-main); /* Main color for the badge */
+  color: var(--color-dark); /* Dark text for contrast */
+  border-radius: 12px; /* Fully rounded corners for the badge */
+  font-size: 0.85rem; /* Smaller font size for the badge */
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: normal; /* Default letter spacing */
+}
+
+/* Optional: Styling the scrollbar to fit the dark theme */
+.topics__list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.topics__list::-webkit-scrollbar-thumb {
+  background-color: var(--color-main); /* Scrollbar color */
+  border-radius: 10px;
+}
+
+.topics__list::-webkit-scrollbar-track {
+  background-color: var(--color-dark-light);
 }
 
 .topics-page a:hover {
@@ -606,7 +677,7 @@ a {
   border-bottom: 1px solid var(--color-dark-medium);
 }
 
-.topics-page .header__search{
+.topics-page .header__search {
   display: block;
 }
 
@@ -647,6 +718,14 @@ a {
   background-color: var(--color-dark);
   border-radius: 1rem;
   padding: 2rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.roomListRoom:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .roomListRoom__header {
@@ -679,6 +758,14 @@ a {
 
   width: 1.6rem;
   height: 1.6rem;
+}
+
+.roomListRoom__title {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-light);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .roomListRoom__content {
@@ -1043,6 +1130,12 @@ a {
   margin: 1rem 0;
 }
 
+.room__body {
+  margin-top: 1rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
 .room__conversation {
   margin-top: 1rem;
   margin-bottom: 4rem;
@@ -1056,7 +1149,6 @@ a {
 }
 
 .threads {
-  background: var(--color-bg);
   border-radius: 0.7rem;
   overflow-y: auto;
   height: 100%;
@@ -1165,3 +1257,103 @@ a {
   color: var(--color-main);
   font-weight: 1.4rem;
 }
+
+.alert-container {
+  top: 100px;
+  position: fixed;
+  left: 100x;
+  right: 10px;
+  z-index: 9999;
+  width: 30%;
+}
+
+/* Base alert box styling */
+.alert {
+  position: relative;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px; /* Adjusted for a more standard appearance */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  color: #fff; /* Default text color */
+  background-color: #007bff; /* Default background */
+}
+
+/* Specific alert types for visibility */
+.alert-success {
+  background-color: #28a745;
+}
+.alert-info {
+  background-color: #17a2b8;
+}
+.alert-warning {
+  background-color: #ffc107;
+}
+.alert-danger {
+  background-color: #dc3545;
+}
+
+/* Close button styling */
+.btn-close {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+  opacity: 0.6;
+}
+
+.btn-close:before,
+.btn-close:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 2px;
+  background-color: #fff;
+}
+
+.btn-close:before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.btn-close:after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.btn-close:hover {
+  opacity: 1;
+}
+
+/* *{
+  border: 1px solid green;
+} */
+
+header .container{
+  display: flex;
+  flex-direction: row ;
+  /* background-color: red; */
+}
+header .container{
+  display: flex;
+  flex-direction: row ;
+  /* background-color: red; */
+}
+
+.header_top_elements{
+  /* background-color: red; */
+  display: flex;
+  gap: 4rem;
+  width: 100%;
+  justify-content: space-between;
+}
+.header__search label{
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  color: black;
+}
+

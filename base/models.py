@@ -47,8 +47,9 @@ class Room(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    participants = models.ManyToManyField(
-        User, related_name='participants', blank=True)
+    participants = models.ManyToManyField(User, related_name='participants', blank=True)
+    upvotes = models.ManyToManyField(User, related_name='room_upvotes', blank=True)
+    downvotes = models.ManyToManyField(User, related_name='room_downvotes', blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -58,11 +59,12 @@ class Room(models.Model):
     def __str__(self):
         return self.name
 
-
 class Message(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     body = models.TextField()
+    upvotes = models.IntegerField(default=0)
+    downvotes = models.IntegerField(default=0)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -71,3 +73,13 @@ class Message(models.Model):
 
     def __str__(self):
         return self.body[0:50]
+
+class RoomVote(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    vote = models.SmallIntegerField()  # 1 for upvote, -1 for downvote
+
+class MessageVote(models.Model):
+    message = models.ForeignKey(Message, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    vote = models.SmallIntegerField()  # 1 for upvote, -1 for downvote

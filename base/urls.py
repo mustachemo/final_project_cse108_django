@@ -19,4 +19,7 @@ urlpatterns = [
 
     path('topics/', views.topicsPage, name="topics"),
     path('activity/', views.activityPage, name="activity"),
+
+    path('room/<int:pk>/upvote/', views.upvote_room, name='upvote_room'),
+    path('room/<int:pk>/downvote/', views.downvote_room, name='downvote_room'),
 ]

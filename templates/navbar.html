@@ -35,10 +35,10 @@
       {% else %}
 
       <!-- Not Logged In -->
-      <a href="{% url 'login' %}">
-        <img src="{% static 'images/avatar.svg' %}" />
-        <p>Login</p>
-      </a>
+      <div class="header__user">
+        <a href="{% url 'login' %}" class="btn btn--main btn--pill">Login</a>
+        <a href="{% url 'register' %}" class="btn btn--main btn--pill">Sign Up</a>
+      </div>
       {% endif %}
 
       <div class="dropdown-menu">

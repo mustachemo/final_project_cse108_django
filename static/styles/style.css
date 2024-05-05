@@ -566,11 +566,16 @@ a {
   text-transform: uppercase;
   font-weight: 500;
   color: var(--color-dark-light);
+  /* put it in the middle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Base Styles */
 .topics__list {
   list-style: none;
+  max-width: 100%; /* Ensures full width */
   max-height: 400px; /* Adjust the height as needed */
   overflow-y: auto; /* Enables vertical scrolling */
   padding: 0 15px; /* Adjusts padding to avoid cutting off scrollbar */
@@ -578,6 +583,10 @@ a {
   box-sizing: border-box; /* Ensures padding is included in width/height calculations */
   background-color: var(--color-bg); /* Assuming --color-bg is a dark color */
   border-radius: 8px; /* Rounded corners for the container */
+}
+
+.topics__list li {
+  width: 100%; /* Ensure li tags take up the full width */
 }
 
 .topics__list li a {

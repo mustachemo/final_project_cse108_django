@@ -1,50 +1,47 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Include Bootstrap CSS -->
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}" />
     <title>StudyBuddy - Find study partners around the world!</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     {% include 'navbar.html' %}
 
     <div class="alert-container">
-    {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            {{ message }}
-        </div>
-        {% endfor %}
-    {% endif %}
+      {% if messages %} {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ message }}
+      </div>
+      {% endfor %} {% endif %}
     </div>
 
-    {% block content %}
-
-
-    {% endblock %}
+    {% block content %} {% endblock %}
 
     <script src="{% static 'js/script.js' %}"></script>
     <script>
-        // close alert and set timeout
-        const alertClose = document.querySelectorAll('.alert .btn-close');
-        alertClose.forEach((btn) => {
-            btn.addEventListener('click', (e) => {
-                e.target.parentElement.style.display = 'none';
-            });
+      // Close alert on button click
+      const alertCloseButtons = document.querySelectorAll('.alert .btn-close');
+      alertCloseButtons.forEach(button => {
+        button.addEventListener('click', e => {
+          e.target.parentElement.style.display = 'none';
         });
-        setTimeout(() => {
-            document.querySelector('.alert').style.display = 'none';
-        }, 5000);
-    </script>
-</body>
+      });
 
+      // Automatically close all alerts after 5000 milliseconds
+      setTimeout(() => {
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(alert => {
+          alert.style.display = 'none';
+        });
+      }, 5000);
+    </script>
+  </body>
 </html>

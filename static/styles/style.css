@@ -269,12 +269,15 @@ a {
 ================================*/
 
 .header {
-  padding: 1.5rem;
+  padding: 1rem 2rem; /* More compact padding */
   background-color: var(--color-dark);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
 .header > .container {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 9.5rem;
 }
 
@@ -286,13 +289,14 @@ a {
 }
 
 .header__logo > img {
-  height: 3.2rem;
-  width: 3.2rem;
+  height: 40px; /* Slightly larger */
+  width: 40px; /* Slightly larger */
+  margin-right: 10px; /* Space between logo and text */
 }
 
 .header__logo > h1 {
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 2rem; /* Slightly smaller for a more refined look */
   color: var(--color-light);
 }
 
@@ -692,6 +696,14 @@ a {
   background-color: var(--color-dark);
   border-radius: 1rem;
   padding: 2rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.roomListRoom:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .roomListRoom__header {

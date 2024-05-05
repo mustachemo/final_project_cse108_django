@@ -44,6 +44,7 @@ def loginPage(request):
 
 def logoutUser(request):
     logout(request)
+    messages.info(request, 'User was logged out!')
     return redirect('home')
 
 
@@ -57,6 +58,8 @@ def registerPage(request):
             user.username = user.username.lower()
             user.save()
             login(request, user)
+            messages.success(request, 'User account was created!')
+            messages.info(request, 'User was logged in!')
             return redirect('home')
         else:
             messages.error(request, 'An error occurred during registration')
@@ -126,6 +129,8 @@ def createRoom(request):
             name=request.POST.get('name'),
             description=request.POST.get('description'),
         )
+
+        messages.success(request, 'Post created successfully!')
         return redirect('home')
 
     context = {'form': form, 'topics': topics}
@@ -147,6 +152,8 @@ def updateRoom(request, pk):
         room.topic = topic
         room.description = request.POST.get('description')
         room.save()
+
+        messages.success(request, 'Post updated successfully!')
         return redirect('home')
 
     context = {'form': form, 'topics': topics, 'room': room}
@@ -162,6 +169,8 @@ def deleteRoom(request, pk):
 
     if request.method == 'POST':
         room.delete()
+
+        messages.success(request, 'Post deleted successfully!')
         return redirect('home')
     return render(request, 'base/delete.html', {'obj': room})
 
@@ -188,6 +197,8 @@ def updateUser(request):
         form = UserForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
+
+            messages.success(request, 'User account was updated!')
             return redirect('user-profile', pk=user.id)
 
     return render(request, 'base/update-user.html', {'form': form})

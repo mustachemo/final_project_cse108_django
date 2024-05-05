@@ -1,18 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
 :root {
-  --color-main: #71c6dd;
-  --color-main-light: #e1f6fb;
-  --color-dark: #3f4156;
-  --color-dark-medium: #51546e;
-  --color-dark-light: #696d97;
-  --color-light: #e5e5e5;
-  --color-gray: #8b8b8b;
-  --color-light-gray: #b2bdbd;
-  --color-bg: #2d2d39;
-  --color-success: #5dd693;
-  --color-error: #fc4b0b;
+  --color-main: #ffc72c; /* UC Merced Yellow */
+  --color-main-dark: #00274c; /* UC Merced Blue */
+  --color-main-light: #ffdd87; /* Lighter yellow for gradients and hover states */
+  --color-dark: #00274c; /* A darker shade of the UC Merced blue */
+  --color-dark-medium: #1a407f; /* A medium shade of blue */
+  --color-dark-light: #334d75; /* Light blue, slightly desaturated */
+  --color-light: #ffffff; /* Pure white for text and backgrounds */
+  --color-gray: #d2d2d2; /* Gray for less emphasis */
+  --color-light-gray: #e8e8e8; /* Light gray for backgrounds and lines */
+  --color-bg: #e5f3ff; /* Very light blue, almost white, for backgrounds */
+  --color-success: #28a745; /* Success green, keep it for semantic purposes */
+  --color-error: #dc3545; /* Error red, also for semantic usage */
 }
+
+/* You might want to adjust usage of these colors throughout your CSS to make sure they are applied consistently. For example
 
 /*========== base styles ==========*/
 

@@ -955,7 +955,7 @@ a {
 
 .profile__info h3 {
   font-size: 2rem;
-  color: var(--color-light);
+  color: var(--text-color-dark);
   font-weight: 400;
 }
 

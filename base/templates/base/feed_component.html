@@ -7,15 +7,12 @@
       </div>
       <span>@{{room.host.username}}</span>
     </a>
-    <div class="roomListRoom__title">
-      <a href="{% url 'room' room.id %}">{{room.name}}</a>
-    </div>
     <div class="roomListRoom__actions">
       <span>{{room.created|timesince}} ago</span>
     </div>
   </div>
-  <div class="roomListRoom__content">
-    <a href="{% url 'room' room.id %}">{{room.description}}</a>
+  <div class="roomListRoom__content" style="text-align: center; font-size: 1.5rem; font-weight: 600; color: #333;">
+    <a href="{% url 'room' room.id %}">{{room.name}}</a>
   </div>
   <div class="roomListRoom__meta">
     <div class="roomListRoom__votes">

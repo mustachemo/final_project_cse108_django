@@ -568,35 +568,65 @@ a {
   color: var(--color-dark-light);
 }
 
+/* Base Styles */
 .topics__list {
   list-style: none;
   max-height: 400px; /* Adjust the height as needed */
   overflow-y: auto; /* Enables vertical scrolling */
-  padding-right: 15px; /* Optional: Adjusts padding to avoid cutting off scrollbar */
+  padding: 0 15px; /* Adjusts padding to avoid cutting off scrollbar */
+  margin: 0;
   box-sizing: border-box; /* Ensures padding is included in width/height calculations */
+  background-color: var(--color-bg); /* Assuming --color-bg is a dark color */
+  border-radius: 8px; /* Rounded corners for the container */
 }
 
 .topics__list li a {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 3rem;
-  font-weight: 500;
-  color: var(--color-light-gray);
-  transition: all 0.3s ease-in-out;
+  justify-content: space-between; /* Ensures label and number are spaced apart */
+  align-items: center; /* Centers items vertically */
+  padding: 10px 20px; /* Consistent padding */
+  border-radius: 6px; /* Optional rounded corners */
+  margin-bottom: 8px; /* Space between items */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  text-decoration: none; /* No underline */
+  color: inherit; /* Inherits color from parent */
 }
 
-.topics__list li a.active,
-.topics__list li a:hover {
-  color: var(--color-main);
+.topics__list li:last-child a {
+  margin-bottom: 0; /* No bottom margin for the last item */
 }
 
+/* Hover and Active Styles */
+.topics__list li a:hover,
+.topics__list li a.active {
+  color: var(--color-main); /* Highlight color */
+  background-color: var(--color-dark); /* Darker background on hover/active */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+/* Count Badge Styles */
 .topics__list li a span {
-  padding: 0.5rem 1rem;
-  background-color: var(--color-dark);
-  border-radius: 3px;
-  font-size: 1.3rem;
+  padding: 4px 8px; /* Slightly less padding for the badge */
+  background-color: var(--color-main); /* Main color for the badge */
+  color: var(--color-dark); /* Dark text for contrast */
+  border-radius: 12px; /* Fully rounded corners for the badge */
+  font-size: 0.85rem; /* Smaller font size for the badge */
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: normal; /* Default letter spacing */
+}
+
+/* Optional: Styling the scrollbar to fit the dark theme */
+.topics__list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.topics__list::-webkit-scrollbar-thumb {
+  background-color: var(--color-main); /* Scrollbar color */
+  border-radius: 10px;
+}
+
+.topics__list::-webkit-scrollbar-track {
+  background-color: var(--color-dark-light);
 }
 
 .topics-page a:hover {

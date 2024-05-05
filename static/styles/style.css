@@ -102,6 +102,8 @@ a {
 
 .btn:hover {
   opacity: 0.9;
+  background-color: var(--color-main); /* Changes background on hover */
+  color: var(--color-dark); /* Changes text color on hover for better visibility */
 }
 
 .btn--dark {

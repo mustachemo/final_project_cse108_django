@@ -1357,3 +1357,15 @@ header .container{
   color: black;
 }
 
+
+.map-container {
+  display: grid;
+  place-items: center;
+  height: 100vh;  
+}
+#map {
+  height: 500px; 
+  width: 95%;   
+}
+
+

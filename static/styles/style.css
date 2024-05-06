@@ -1363,7 +1363,26 @@ header .container{
   place-items: center;
   height: 65vh;  
 }
+
 #map {
   height: 500px; 
-  width: 95%;   
+  width: 95%;
+  border: 3px solid #ffc72c; /* Replace #4CAF50 with the color you prefer */
+  border-radius: 10px; /* Optional: for rounded corners */
+  box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Optional: for a shadow effect */
+}
+
+
+.easy-button-button .fa {
+  color: #333; /* Change icon color */
+  font-size: 18px; /* Increase the icon size */
+  line-height: 30px; /* Center the icon vertically */
+}
+
+.leaflet-bar button:hover {
+  background-color: #ffc72c !important; 
+}
+
+.leaflet-bar a:hover, .leaflet-bar a:focus {
+  background-color: #ffc72c !important; 
 }

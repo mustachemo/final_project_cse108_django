@@ -22,4 +22,6 @@ urlpatterns = [
 
     path('room/<int:pk>/upvote/', views.upvote_room, name='upvote_room'),
     path('room/<int:pk>/downvote/', views.downvote_room, name='downvote_room'),
+    
+    path('study-room/', views.StudyRoom, name="study-room"),
 ]

@@ -67,3 +67,62 @@ if (photoInput)
 // Scroll to Bottom
 const conversationThread = document.querySelector(".room__box");
 if (conversationThread) conversationThread.scrollTop = conversationThread.scrollHeight;
+
+document.addEventListener('DOMContentLoaded', function () {
+  var map = L.map('map', {
+      center: [37.364333, -120.425583], // Center of the map
+      zoom: 16,
+      maxBounds: L.latLngBounds(
+          L.latLng(37.354333, -120.435583), // Southwest corner of the boundary
+          L.latLng(37.374333, -120.415583)  // Northeast corner of the boundary
+      ),
+      maxBoundsViscosity: 1.0, // Makes the bounds fully solid
+      zoomControl: true, // Enable zoom control buttons
+      attributionControl: true, // Enable attribution control
+      scrollWheelZoom: false // Disables zooming with the scroll wheel and touchpad gestures
+
+  });
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+
+  // Create a home button
+  L.easyButton('fa-home', function(btn, map){
+      map.setView([37.364333, -120.425583], 16);
+  }, 'Go to Default View').addTo(map);
+
+  // Custom icon setup
+  var customIcon = L.icon({
+    iconUrl: '/static/images/map-marker.png', // Replace with your image path
+    iconSize: [50, 50], // size of the icon
+    popupAnchor: [0, -10] // point from which the popup should open relative to the iconAnchor
+  });
+
+  // Array of marker data
+  var locations = [
+      [37.362896059964946, -120.42595859928308, "TRV Lounge","Open 8:00 AM - 9:00 PM", "/static/images/trv.jpeg"],
+      [37.36634316703297, -120.42443484196352, "Kolligan Library", "Open 8:00 AM - 9:00 PM", "/static/images/koliganlibrary.jpeg"],
+      [37.36728539137442, -120.42203925056452, "Student Services Building","Open 8:00 AM - 9:00 PM", "/static/images/SSB.jpeg"],
+  ];
+
+  // Adding markers to the map
+  locations.forEach(function(location) {
+      var marker = L.marker([location[0], location[1]], {icon: customIcon}).addTo(map);
+      marker.bindPopup("<b>" + location[2] + "</b>").openPopup();
+
+      marker.on('click', function() {
+        document.getElementById('studyRoomLink').textContent = location[2];
+        document.getElementById('studyRoomTextarea').textContent = location[3];
+        document.getElementById('image').src = location[4];
+      });
+  });
+  //  // Add click event listener to the map to log the coordinates
+  //  map.on('click', function(e) {
+  //   var lat = e.latlng.lat;
+  //   var lng = e.latlng.lng;
+  //   console.log(`Lat, Long: ${lat}, ${lng}`);
+  // });
+
+});

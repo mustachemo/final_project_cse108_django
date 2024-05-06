@@ -226,3 +226,8 @@ def downvote_room(request, pk):
     room = Room.objects.get(id=pk)
     room.downvotes.add(request.user)
     return redirect('home')
+
+
+@login_required(login_url='login')
+def StudyRoom(request):
+    return render(request, 'base/study_room.html')

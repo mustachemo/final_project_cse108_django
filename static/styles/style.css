@@ -1405,11 +1405,19 @@ header .container{
 .btn_up{
   background-color: transparent;
   border: none;
+  cursor: pointer;
+}
+.btn_up:hover {
+  filter: brightness(0.8) saturate(0.8);
 }
 .btn_down{
   background-color: transparent;
   border: none;
   margin-left: 1rem;
+  cursor: pointer;
+}
+.btn_down:hover {
+  filter: brightness(0.8) saturate(0.8);
 }
 
 /* main .topics{

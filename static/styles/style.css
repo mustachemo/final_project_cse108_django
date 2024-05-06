@@ -1172,7 +1172,9 @@ a {
 
 .thread__top svg {
   fill: var(--color-dark-light);
+
 }
+
 
 .thread__author {
   display: flex;
@@ -1187,8 +1189,11 @@ a {
   gap: 1rem;
 }
 
+
 .thread__details {
   font-size: 1.4rem;
+  background-color: red;
+
   margin-top: 0.5rem;
 }
 

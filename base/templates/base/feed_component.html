@@ -7,23 +7,20 @@
       </div>
       <span>@{{room.host.username}}</span>
     </a>
-    <div class="roomListRoom__title">
-      <a href="{% url 'room' room.id %}">{{room.name}}</a>
-    </div>
     <div class="roomListRoom__actions">
       <span>{{room.created|timesince}} ago</span>
     </div>
   </div>
-  <div class="roomListRoom__content">
-    <a href="{% url 'room' room.id %}">{{room.description}}</a>
+  <div class="roomListRoom__content" style="text-align: center; font-size: 1.5rem; font-weight: 600; color: #333;">
+    <a href="{% url 'room' room.id %}">{{room.name}}</a>
   </div>
   <div class="roomListRoom__meta">
     <div class="roomListRoom__votes">
-      <button onclick="location.href='{% url 'upvote_room' room.id %}'">
+      <button class="btn_up"  onclick="location.href='{% url 'upvote_room' room.id %}'">
         <img src="{% static 'images/icons/upvote.svg' %}" alt="Upvote" style="width: 20px" />
       </button>
       <span>{{ room.upvotes.count }}</span>
-      <button onclick="location.href='{% url 'downvote_room' room.id %}'">
+      <button class="btn_down" onclick="location.href='{% url 'downvote_room' room.id %}'">
         <img src="{% static 'images/icons/downvote.svg' %}" alt="Downvote" style="width: 20px" />
       </button>
       <span>{{ room.downvotes.count }}</span>

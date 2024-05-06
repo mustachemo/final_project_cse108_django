@@ -101,6 +101,7 @@
         <form action="" method="POST">
           {% csrf_token %}
           <input name="body" placeholder="Reply to post here..." />
+          <img src="{% static 'images/icons/post-icon.png' %}" alt="send_icon" />
         </form>
       </div>
     </div>

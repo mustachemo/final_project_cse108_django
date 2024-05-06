@@ -1362,10 +1362,12 @@ header .container{
   display: grid;
   place-items: center;
   height: 65vh;  
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 #map {
-  height: 500px; 
+  height: 450px; 
   width: 95%;
   border: 3px solid #ffc72c; /* Replace #4CAF50 with the color you prefer */
   border-radius: 10px; /* Optional: for rounded corners */
@@ -1395,4 +1397,57 @@ b{
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip{
   box-shadow: 0 3px 14px #00274c !important;
+}
+
+/* study rooms css */
+
+.study-rooms {
+  margin-bottom: 2.4rem;
+  background-color: var(--color-dark);
+  border-radius: 1rem;
+  padding: 2rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* display: none; */
+}
+
+.study-rooms:hover  {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.studyRoom__content {
+  margin: 1rem 0;
+}
+
+.studyRoom__content a {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: var(--color-light);
+  transition: all 0.3s ease-in-out;
+}
+
+.studyRoom__content a:hover {
+  color: var(--color-main);
+}
+
+.study-rooms .studyRoom__content {
+  display: flex; /* Enables flexbox layout */
+  align-items: center; /* Vertically center the items in the container */
+  gap: 20px; /* Adds space between the text container and the image */
+}
+
+.study-rooms .studyRoom__content .text-container {
+  display: flex; /* Uses flexbox to stack the link and h1 vertically */
+  flex-direction: column; /* Stacks children vertically */
+}
+
+.study-rooms .studyRoom__content img {
+  width: auto; /* Adjust width as necessary */
+  max-width: 30%; /* Limits the image width to 50% of the container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Optional: Rounded corners for a softer look */
+  margin: auto;
 }

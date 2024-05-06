@@ -78,7 +78,9 @@ document.addEventListener('DOMContentLoaded', function () {
       ),
       maxBoundsViscosity: 1.0, // Makes the bounds fully solid
       zoomControl: true, // Enable zoom control buttons
-      attributionControl: true // Enable attribution control
+      attributionControl: true, // Enable attribution control
+      scrollWheelZoom: false // Disables zooming with the scroll wheel and touchpad gestures
+
   });
 
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -100,22 +102,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Array of marker data
   var locations = [
-      [37.362896059964946, -120.42595859928308, "TRV Lounge"],
-      [37.36634316703297, -120.42443484196352, "Kolligan Library"],
-      [37.36728539137442, -120.42203925056452, "Student Services Building"],
+      [37.362896059964946, -120.42595859928308, "TRV Lounge","Open 8:00 AM - 9:00 PM", "/static/images/trv.jpeg"],
+      [37.36634316703297, -120.42443484196352, "Kolligan Library", "Open 8:00 AM - 9:00 PM", "/static/images/koliganlibrary.jpeg"],
+      [37.36728539137442, -120.42203925056452, "Student Services Building","Open 8:00 AM - 9:00 PM", "/static/images/SSB.jpeg"],
   ];
 
   // Adding markers to the map
   locations.forEach(function(location) {
       var marker = L.marker([location[0], location[1]], {icon: customIcon}).addTo(map);
       marker.bindPopup("<b>" + location[2] + "</b>").openPopup();
-  });
 
-   // Add click event listener to the map to log the coordinates
-   map.on('click', function(e) {
-    var lat = e.latlng.lat;
-    var lng = e.latlng.lng;
-    console.log(`Lat, Long: ${lat}, ${lng}`);
+      marker.on('click', function() {
+        document.getElementById('studyRoomLink').textContent = location[2];
+        document.getElementById('studyRoomTextarea').textContent = location[3];
+        document.getElementById('image').src = location[4];
+      });
   });
+  //  // Add click event listener to the map to log the coordinates
+  //  map.on('click', function(e) {
+  //   var lat = e.latlng.lat;
+  //   var lng = e.latlng.lng;
+  //   console.log(`Lat, Long: ${lat}, ${lng}`);
+  // });
 
 });

@@ -69,10 +69,12 @@ const conversationThread = document.querySelector(".room__box");
 if (conversationThread) conversationThread.scrollTop = conversationThread.scrollHeight;
 
 document.addEventListener('DOMContentLoaded', function () {
-  var map = L.map('map').setView([37.365688, -120.432228], 13);
+  var map = L.map('map').setView([37.365688, -120.432228], 16);
+  map.panBy([300, 50]);
 
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
+
 });

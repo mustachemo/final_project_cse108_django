@@ -1361,11 +1361,9 @@ header .container{
 .map-container {
   display: grid;
   place-items: center;
-  height: 100vh;  
+  height: 65vh;  
 }
 #map {
   height: 500px; 
   width: 95%;   
 }
-
-

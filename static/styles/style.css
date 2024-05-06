@@ -326,6 +326,7 @@ a {
   align-items: center;
   gap: 1rem;
   border-radius: 4px;
+  color: black;
 }
 
 .header__search svg {
@@ -340,7 +341,7 @@ a {
   background: transparent;
   border: none;
   outline: none;
-  color: var(--color-light);
+  color: black;
 }
 
 @media screen and (max-width: 800px) {

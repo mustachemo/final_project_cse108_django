@@ -1381,8 +1381,6 @@ header .container{
   display: grid;
   place-items: center;
   height: 65vh;  
-  margin-top: 10px;
-  margin-bottom: 30px;
 }
 
 #map {

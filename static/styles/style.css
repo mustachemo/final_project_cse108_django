@@ -326,6 +326,7 @@ a {
   align-items: center;
   gap: 1rem;
   border-radius: 4px;
+  color: black;
 }
 
 .header__search svg {
@@ -340,7 +341,7 @@ a {
   background: transparent;
   border: none;
   outline: none;
-  color: var(--color-light);
+  color: black;
 }
 
 @media screen and (max-width: 800px) {
@@ -442,18 +443,15 @@ a {
 }
 
 .layout--2 > .container > div:first-child {
-  flex-basis: 72%;
+  flex-basis: 100%;
 }
 
-.layout--2 > .container > div:last-child {
-  flex-basis: 25%;
-}
 /*========== Layout Box ==========*/
 
 .layout__box {
   width: 90%;
   max-width: 48rem;
-  min-height: 40rem;
+  min-height: 10rem;
   max-height: 80vh;
   position: absolute;
   top: 50%;
@@ -491,6 +489,11 @@ a {
 
 .layout__body {
   margin: 3rem;
+}
+.layout__body > input {
+text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 @media screen and (max-width: 900px) {
@@ -535,6 +538,9 @@ a {
   color: var(--color-light);
   font-weight: 500;
   outline: none;
+  display: flex;
+  align-items: center;
+justify-content: center;
 }
 
 .form__group input:focus,
@@ -955,7 +961,7 @@ a {
 
 .profile__info h3 {
   font-size: 2rem;
-  color: var(--color-light);
+  color: var(--text-color-dark);
   font-weight: 400;
 }
 
@@ -1062,6 +1068,19 @@ a {
   top: 4.4rem;
   padding-top: 2rem;
   padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Aligns children vertically from top to bottom */
+  height: 100%; /* Ensure the header takes full height of its container */
+  border-bottom: 1px solid white;
+}
+
+.room__footer {
+  display: flex;
+  align-items: center; /* Align items vertically center */
+  justify-content: space-between; /* Space between avatar and topic */
+  margin-top: auto; /* Pushes it to the bottom */
+  padding-top: 1rem; /* Optional: adds some space above */
 }
 
 @media screen and (max-width: 500px) {
@@ -1157,10 +1176,10 @@ a {
 }
 
 .thread {
-  border-left: 2px solid var(--color-dark);
+  border-bottom: 0.2px solid var(--color-main);
   padding-left: 1rem;
   margin: 2rem 0;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .thread__top {
@@ -1209,7 +1228,7 @@ a {
   outline: none;
   border-radius: 0.7rem;
   height: 4.5rem;
-  width: 100%;
+  width: 98%;
   margin-top: -1rem;
   padding: 1.2rem;
   font-size: 1.4rem;

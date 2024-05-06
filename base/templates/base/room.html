@@ -47,22 +47,25 @@
       <div class="room__box scroll">
         <div class="room__header scroll">
           <div class="room__info">
-            <h3>{{room.name}}</h3>
-            <span>{{room.created|timesince}} ago</span>
+              <h3>{{ room.name }}</h3>
+              <span>{{ room.created|timesince }} ago</span>
           </div>
-          <div class="room__body">{{room.description}}</div>
-          <div class="room__hosted">
-            <p>Posted By</p>
-            <a href="{% url 'user-profile' room.host.id %}" class="room__author">
-              <div class="avatar avatar--small">
-                <img src="{{room.host.avatar.url}}" />
+          <div class="room__body">{{ room.description }}</div>
+      
+          <!-- New div for bottom row -->
+          <div class="room__footer">
+              <div class="room__hosted">
+                  <p>Post By</p>
+                  <a href="{% url 'user-profile' room.host.id %}" class="room__author">
+                      <div class="avatar avatar--small">
+                          <img src="{{ room.host.avatar.url }}" alt="Avatar">
+                      </div>
+                      <span>@{{ room.host.username }}</span>
+                  </a>
               </div>
-              <span>@{{room.host.username}}</span>
-            </a>
+              <span class="room__topics">{{ room.topic }}</span>
           </div>
-
-          <span class="room__topics">{{room.topic}}</span>
-        </div>
+      </div>
 
         <div class="room__conversation">
           <div class="threads scroll">
@@ -106,28 +109,6 @@
     </div>
     <!-- Room End -->
 
-    <!--   Start -->
-    <div class="participants">
-      <h3 class="participants__top">
-        Replys by
-        <span>({% if participants.count == 1%}{{participants.count}} Cat{% else %}{{participants.count}} Cats{% endif %})</span>
-      </h3>
-      <div class="participants__list scroll">
-        {% for user in participants %}
-        <a href="{%  url 'user-profile' user.id %}" class="participant">
-          <div class="avatar avatar--medium">
-            <img src="{{user.avatar.url}}" />
-          </div>
-          <p>
-            {{user.name}}
-            <span>@{{user.username}}</span>
-          </p>
-        </a>
-        {% endfor %}
-      </div>
-    </div>
-    <!--  End -->
   </div>
 </main>
-<script src="script.js"></script>
 {% endblock content %}

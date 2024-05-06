@@ -19,7 +19,7 @@
           {% csrf_token %}
 
           <div class="form__group">
-            <label for="room_topic">Pick a class:</label>
+            <label for="room_topic">Pick a Major:</label>
             <input required type="text" value="{{room.topic.name}}" name="topic" list="topic-list" />
             <datalist id="topic-list">
               <select id="room_topic">
@@ -55,7 +55,8 @@
 
           <div class="form__action">
             <a class="btn btn--dark" href="{{request.META.HTTP_REFERER}}">Cancel</a>
-            <button class="btn btn--main" type="submit">Post!</button>
+            <button class="btn btn--main" type="submit" style="width: 100%; display: block;"
+            >Post!</button>
           </div>
         </form>
       </div>

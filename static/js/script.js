@@ -68,6 +68,46 @@ if (photoInput)
 const conversationThread = document.querySelector(".room__box");
 if (conversationThread) conversationThread.scrollTop = conversationThread.scrollHeight;
 
+const modal = document.querySelector('.modal');
+const btn__login = document.querySelector('.btn__login');
+
+// Function to toggle the modal and apply blur effect
+function toggle_the_modal(){
+  // Toggle the visibility of the modal
+  modal.classList.toggle('hidden');
+  
+  // Apply blur effect to all containers except the modal when the modal is displayed
+  if (!modal.classList.contains('hidden')) {
+    const containers = document.querySelectorAll('.container');
+    for(let container of containers){
+      if (!container.contains(modal)) { // Check if the container contains the modal
+        container.style.filter= "blur(3px)";
+      }
+    }
+  } else {
+    // Remove blur effect from all containers when the modal is hidden
+    const containers = document.querySelectorAll('.container');
+    for(let container of containers){
+      container.style.filter= "none";
+    }
+  }
+}
+
+// Add event listener to login button to toggle the modal
+btn__login.addEventListener('click', toggle_the_modal);
+
+// When the user clicks outside of the modal, remove the blur effect and close the modal
+window.addEventListener('click', function(event) {
+  if (!modal.classList.contains('hidden') && event.target.closest('.modal') === null && event.target !== btn__login) {
+    // Clicked outside the modal and not on the login button, remove blur effect and close modal
+    modal.classList.add('hidden'); // Hide the modal
+    const containers = document.querySelectorAll('.container');
+    for(let container of containers){
+      container.style.filter= "none"; // Remove blur effect from containers
+    }
+  }
+});
+
 document.addEventListener('DOMContentLoaded', function () {
   var map = L.map('map', {
       center: [37.364333, -120.425583], // Center of the map

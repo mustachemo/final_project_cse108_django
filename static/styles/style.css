@@ -1554,3 +1554,12 @@ main .activities{
   right: 40px
   wid
 } */
+
+
+.modal{
+  z-index: 5000;
+}
+
+.hidden{
+  display: none;
+}

@@ -95,15 +95,14 @@ document.addEventListener('DOMContentLoaded', function () {
   var customIcon = L.icon({
     iconUrl: '/static/images/map-marker.png', // Replace with your image path
     iconSize: [50, 50], // size of the icon
-    iconAnchor: [25, 110], // point of the icon which will correspond to marker's location
-    popupAnchor: [0, -95] // point from which the popup should open relative to the iconAnchor
+    popupAnchor: [0, -10] // point from which the popup should open relative to the iconAnchor
   });
 
   // Array of marker data
   var locations = [
-      [37.364333, -120.425583, "Location 1"],
-      [37.365333, -120.426583, "Location 2"],
-      [37.363333, -120.424583, "Location 3"]
+      [37.362896059964946, -120.42595859928308, "TRV Lounge"],
+      [37.36634316703297, -120.42443484196352, "Kolligan Library"],
+      [37.36728539137442, -120.42203925056452, "Student Services Building"],
   ];
 
   // Adding markers to the map
@@ -111,4 +110,12 @@ document.addEventListener('DOMContentLoaded', function () {
       var marker = L.marker([location[0], location[1]], {icon: customIcon}).addTo(map);
       marker.bindPopup("<b>" + location[2] + "</b>").openPopup();
   });
+
+   // Add click event listener to the map to log the coordinates
+   map.on('click', function(e) {
+    var lat = e.latlng.lat;
+    var lng = e.latlng.lng;
+    console.log(`Lat, Long: ${lat}, ${lng}`);
+  });
+
 });

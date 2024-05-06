@@ -16,12 +16,12 @@
   </div>
   <div class="roomListRoom__meta">
     <div class="roomListRoom__votes">
-      <button onclick="location.href='{% url 'upvote_room' room.id %}'">
-        <img src="{% static 'images/icons/upvote.svg' %}" alt="Upvote" style="width: 20px" />
+      <button class="btn_up"  onclick="location.href='{% url 'upvote_room' room.id %}'">
+        <img class="img_up" src="{% static 'images/icons/arrowup.png' %}" alt="Upvote" style="width: 20px" />
       </button>
       <span>{{ room.upvotes.count }}</span>
-      <button onclick="location.href='{% url 'downvote_room' room.id %}'">
-        <img src="{% static 'images/icons/downvote.svg' %}" alt="Downvote" style="width: 20px" />
+      <button class="btn_down" onclick="location.href='{% url 'downvote_room' room.id %}'">
+        <img class="img_down" src="{% static 'images/icons/arrowdown.png' %}" alt="Downvote" style="width: 20px" />
       </button>
       <span>{{ room.downvotes.count }}</span>
     </div>

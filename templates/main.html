@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Include Bootstrap CSS -->
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}" />
+    <title>Bobcat Hub!</title>
+    <!-- Add favicon -->
+    <link rel="icon" type="image/png" href="{% static 'images/icons/icon-cat.png' %}">
     <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -22,6 +26,11 @@
 
   <body>
     {% include 'navbar.html' %}
+
+      <!-- Help Icon -->
+      <div class="help-icon">
+        <img src="{% static 'images/help-icon.png' %}" alt="Help">
+    </div>
 
     <div class="alert-container">
       {% if messages %} {% for message in messages %}

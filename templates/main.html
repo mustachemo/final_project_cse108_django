@@ -8,11 +8,16 @@
     <!-- Include Bootstrap CSS -->
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}" />
-    <title>StudyBuddy - Find study partners around the world!</title>
+    <title>UCM School of Engineering</title>
   </head>
 
   <body>
     {% include 'navbar.html' %}
+
+      <!-- Help Icon -->
+      <div class="help-icon">
+        <img src="{% static 'images/help-icon.png' %}" alt="Help">
+    </div>
 
     <div class="alert-container">
       {% if messages %} {% for message in messages %}

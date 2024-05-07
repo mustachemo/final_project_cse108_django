@@ -85,6 +85,13 @@ a {
   margin: 0 auto;
 }
 
+.helpcontainer {
+  max-width: 90vw;
+  width: 90%;
+  max-height: 100vh;
+  margin: 0 auto;
+}
+
 .btn {
   background-color: transparent;
   border: none;
@@ -293,6 +300,7 @@ a {
   background-color: var(--color-main-dark);
   color: var(--color-light);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  /* position: fixed; */
 }
 
 .header > .container {
@@ -1372,7 +1380,7 @@ header .container{
   right: 0px; /* Adjust as needed */
   z-index: 1000; /* Ensure it's above other content */
   cursor: pointer;
-  background-image: url('path/to/your/image.png'); /* Replace 'path/to/your/image.png' with the actual path to your PNG image */
+  
   background-size: cover; /* Adjust as needed */
   background-repeat: no-repeat; /* Adjust as needed */
   /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
@@ -1447,6 +1455,14 @@ main .activities{
   z-index: 5000;
 }
 
+.helpmodal{
+  z-index: 5000;
+}
+
 .hidden{
   display: none;
+}
+
+.faq__section {
+  margin-bottom: 30px; /* Adjust the value as needed for the desired spacing */
 }

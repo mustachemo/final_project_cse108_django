@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Help Modal</title>
+<style>
+    /* Style for the modal */
+    .helpmodal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        padding-top: 60px;
+    }
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto; /* 5% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+    /* Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<!-- Help button -->
+<button onclick="openHelpModal()">Help</button>
+
+<!-- The Modal -->
+<div id="helpmodal" class="helpmodal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close" onclick="closeHelpModal()">&times;</span>
+    <p>This is some help text. You can replace it with your own instructions.</p>
+  </div>
+
+</div>
+
+<script>
+// Function to open the modal
+function openHelpModal() {
+  document.getElementById("helpmodal").style.display = "block";
+}
+
+// Function to close the modal
+function closeHelpModal() {
+  document.getElementById("helpmodal").style.display = "none";
+}
+
+// Close the modal if user clicks outside of it
+window.onclick = function(event) {
+  var modal = document.getElementById("helpmodal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>

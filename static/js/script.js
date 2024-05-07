@@ -69,7 +69,11 @@ const conversationThread = document.querySelector(".room__box");
 if (conversationThread) conversationThread.scrollTop = conversationThread.scrollHeight;
 
 const modal = document.querySelector('.modal');
+const helpmodal = document.querySelector('.helpmodal');
 const btn__login = document.querySelector('.btn__login');
+const btn__help = document.querySelector('.help-icon');
+const btn__createpostbtn = document.querySelector('.createpostbtn');
+
 
 // Function to toggle the modal and apply blur effect
 function toggle_the_modal(){
@@ -93,15 +97,50 @@ function toggle_the_modal(){
   }
 }
 
+function toggle_the_help_modal(){
+  // Toggle the visibility of the modal
+  helpmodal.classList.toggle('hidden');
+  
+  // Apply blur effect to all containers except the modal when the modal is displayed
+  if (!helpmodal.classList.contains('hidden')) {
+    const containers = document.querySelectorAll('.container');
+    for(let container of containers){
+      if (!container.contains(helpmodal)) { // Check if the container contains the modal
+        container.style.filter= "blur(3px)";
+      }
+    }
+  } else {
+    // Remove blur effect from all containers when the modal is hidden
+    const containers = document.querySelectorAll('.container');
+    for(let container of containers){
+      container.style.filter= "none";
+    }
+  }
+}
+
+function create_post_handler(){
+  toggle_the_modal();
+}
 // Add event listener to login button to toggle the modal
 btn__login.addEventListener('click', toggle_the_modal);
+btn__createpostbtn.addEventListener('click',create_post_handler );
 
-// When the user clicks outside of the modal, remove the blur effect and close the modal
+btn__help.addEventListener('click', toggle_the_help_modal);
+
+//btn__help.addEventListener('click', e => window.alert("clicked!"));// tWhen the user clicks outside of the modal, remove the blur effect and close the modal
 window.addEventListener('click', function(event) {
-  if (!modal.classList.contains('hidden') && event.target.closest('.modal') === null && event.target !== btn__login) {
+  if (!modal.classList.contains('hidden') && event.target.closest('.modal') === null && event.target !== btn__login && event.target !==btn__createpostbtn) {
     // Clicked outside the modal and not on the login button, remove blur effect and close modal
     modal.classList.add('hidden'); // Hide the modal
     const containers = document.querySelectorAll('.container');
+    for(let container of containers){
+      container.style.filter= "none"; // Remove blur effect from containers
+    }
+  }
+  else if (!help.modalclassList.contains('hidden') && event.target.closest('.helpmodal') === null && event.target !== btn__help) {
+    // Clicked outside the modal and not on the login button, remove blur effect and close modal
+    help.modalclassList.add('hidden'); // Hide the modal
+    const containers = document.querySelectorAll('.helpcontainer');
     for(let container of containers){
       container.style.filter= "none"; // Remove blur effect from containers
     }
